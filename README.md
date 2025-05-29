@@ -7,6 +7,16 @@ This project presents the design and implementation of a finite state machine (F
 - `y` output (e.g., LED) goes HIGH when unlocked
 - Verified with a comprehensive testbench and waveform simulation
 
+## FSM States and Transitions
+
+| Current State | Input `x` | Next State | Output `y` |
+|---------------|------------|-------------|--------------|
+| S0            | `011`      | S1          | 0            |
+| S1            | `111`      | S2          | 0            |
+| S2            | `101`      | S3          | 1            |
+| *Any other*   | *invalid*  | S0          | 0            |
+
+
 ## 📸 Simulation Waveform
 
 The waveform shows the FSM correctly transitioning and asserting the output `y` once the correct sequence is received:
