@@ -6,3 +6,9 @@ This project presents the design and implementation of a finite state machine (F
 - Resettable FSM using a `reset` signal
 - `y` output (e.g., LED) goes HIGH when unlocked
 - Verified with a comprehensive testbench and waveform simulation
+
+## 📸 Simulation Waveform
+
+The waveform shows the FSM correctly transitioning and asserting the output `y` once the correct sequence is received:
+
+![ALU Waveform](./waveform.png)
