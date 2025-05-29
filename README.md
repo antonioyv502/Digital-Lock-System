@@ -22,6 +22,6 @@ This project presents the design and implementation of a finite state machine (F
 
 ## 📸 Simulation Waveform
 
-The waveform shows the FSM correctly transitioning and asserting the output `y` once the correct sequence is received:
+The waveform shows the FSM correctly transitioning and asserting the output `y` once the correct sequence is received and shows invalid input sequences:
 
 ![ALU Waveform](./waveform.png)
