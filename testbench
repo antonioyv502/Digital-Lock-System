@@ -1,0 +1,62 @@
+module tb_digital_lock;
+
+    // Testbench signals
+    reg clk;
+    reg reset;
+    reg [2:0] x;
+    wire y;
+
+    // Instantiate the digital_lock module
+    digital_lock uut (
+        .clk(clk),
+        .reset(reset),
+        .x(x),
+        .y(y)
+    );
+
+    // Clock generation (50 MHz clock)
+    always begin
+        #10 clk = ~clk;  // Toggle clock every 10 time units (50 MHz)
+    end
+
+    // Test sequence
+    initial begin
+        // Initialize signals
+        clk = 0;
+        reset = 0;
+        x = 3'b000;
+
+        // Dump waveforms to a VCD file for simulation visualization
+        $dumpfile("digital_lock_tb.vcd");  // Specify the dump file name
+        $dumpvars(0, tb_digital_lock);     // Dump all variables for the top level
+
+        // Apply reset
+        reset = 1;
+        #20;  // Wait for two clock cycles
+        reset = 0;
+        
+        // Test sequence
+        x = 3'b011; // Transition to state S1
+        #20;
+        x = 3'b111; // Transition to state S2
+        #20;
+        x = 3'b101; // Transition to state S3
+        #20;
+        x = 3'b000; // Reset back to state S0
+        #20;
+        
+        // Test with invalid inputs to see behavior (remain in S0)
+        x = 3'b100;
+        #20;
+        
+        x = 3'b011; // Transition to S1 again
+        #20;
+
+       x= 3'b111;  //Transition to S2 again
+       #20;
+      
+        // Finish simulation
+        $finish;
+    end
+
+endmodule
