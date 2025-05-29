@@ -28,4 +28,4 @@ The waveform shows the FSM correctly transitioning and asserting the output `y` 
 
 ## FSM Schematic
 The FSM unlocks on the input sequence: 011 → 111 → 101.
-![FSM Diagram](schematic.png)
+![FSM Diagram](Schematic.png)
