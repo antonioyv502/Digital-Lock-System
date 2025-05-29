@@ -16,12 +16,12 @@ This project presents the design and implementation of a finite state machine (F
 | S1            | 111    | S2         | 0             |
 | S1            | NOT 111| S0         | 0             |
 | S2            | 101    | S3         | 0             |
-| S2            | NOT 101| S0         | 0             |
+| S2            | NOT 101| S0         | 0          
 | S3            | X X X  | S0         | 1             | 
 
 
 ## 📸 Simulation Waveform
 
-The waveform shows the FSM correctly transitioning and asserting the output `y` once the correct sequence is received and shows invalid input sequences:
+The waveform shows the FSM correctly transitioning and asserting the output `y` once the correct sequence is received and shows when an invlaid input is received:
 
 ![ALU Waveform](./waveform.png)
