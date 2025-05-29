@@ -9,14 +9,14 @@ This project presents the design and implementation of a Moore finite state mach
 
 ## FSM States and Transitions
 
-| Current State | Input `x` | Next State | Output `y` |
+| Current State | Input `x` | Next State | Output `y` | 
 |---------------|--------|------------|---------------|
 | S0            | 011    | S1         | 0             |
 | S0            | NOT 011| S0         | 0             |
 | S1            | 111    | S2         | 0             |
 | S1            | NOT 111| S0         | 0             |
 | S2            | 101    | S3         | 0             |
-| S2            | NOT 101| S0         | 0          
+| S2            | NOT 101| S0         | 0             |
 | S3            | X X X  | S0         | 1             | 
 
 
