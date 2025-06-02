@@ -26,6 +26,8 @@ The waveform shows the FSM correctly transitioning and asserting the output `y` 
 
 ![ALU Waveform](./Waveform/Digital_Lock_Waveform.png)
 
+![ALU Waveform](./Waveform/Digital-Lock-Waveform.png)
+
 ## Moore FSM Schematic
 The FSM unlocks on the input sequence: 011 → 111 → 101.
 ![FSM Diagram](Schematic/Schematic.png)
