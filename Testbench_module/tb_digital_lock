@@ -26,8 +26,6 @@ module tb_digital_lock;
         reset = 0;
         x = 3'b000;
 
-        // Dump waveforms to a VCD file for simulation visualization
-        $dumpfile("digital_lock_tb.vcd");  // Specify the dump file name
         $dumpvars(0, tb_digital_lock);     // Dump all variables for the top level
 
         // Apply reset
