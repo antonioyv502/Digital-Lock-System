@@ -53,6 +53,9 @@ module tb_digital_lock;
        x= 3'b111;  //Transition to S2 again
        #20;
       
+       x=3'b100; //Going back to S0
+  	   #20;
+      
         // Finish simulation
         $finish;
     end
