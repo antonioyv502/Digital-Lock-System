@@ -27,8 +27,7 @@ This waveform shows the FSM correctly transitioning through each state when the 
 ![ALU Waveform](./Waveforms/Digital-Lock-Waveform.png)
 
 
-
-In this waveform, incorrect inputs are provided. The FSM remains in the initial state and does not proceed through the unlock sequence. This demonstrates the system's repsonse against invalid entries:
+This waveform shows the FSM receiving incorrect inputs at first, keeping the lock in its initial state. This confirms it correctly rejects invalid sequences. When the correct input sequence is entered afterward, the FSM transitions states and the y output goes high.
 
 ![ALU Waveform](./Waveforms/Digital_Lock_Invalid_Inputs_Waveform.png)
 
