@@ -22,13 +22,13 @@ This project presents the design and implementation of a Moore finite state mach
 
 ## 📸 Simulation Waveform
 
-The waveform shows the FSM correctly transitioning and asserting the output `y` once the correct sequence is received and shows when an invalid input is received, where the FSM correctly resets to the initial state:
+This waveform shows the FSM correctly transitioning through each state when the correct sequence is entered, asserting y = 1 at the end. It also demonstrates how the FSM resets to the initial state when an invalid input is detected mid-sequence:
 
 ![ALU Waveform](./Waveforms/Digital-Lock-Waveform.png)
 
 
 
-In this waveform, incorrect inputs are provided. The FSM remains in the initial state and does not proceed through the unlock sequence. This demonstrates the system's repsonse against invalid entries.
+In this waveform, incorrect inputs are provided. The FSM remains in the initial state and does not proceed through the unlock sequence. This demonstrates the system's repsonse against invalid entries:
 
 ![ALU Waveform](./Waveforms/Digital_Lock_Invalid_Inputs_Waveform.png)
 
