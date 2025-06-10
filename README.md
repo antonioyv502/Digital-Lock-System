@@ -34,3 +34,13 @@ This waveform shows the FSM receiving incorrect inputs at first, keeping the loc
 ## Moore FSM Schematic
 The FSM unlocks on the input sequence: 011 → 111 → 101.
 ![FSM Diagram](Schematic/Schematic.png)
+
+
+## How to Run
+
+1. Open the project in **EDA Playground**:  
+   👉 [https://www.edaplayground.com/x/hMpk](https://www.edaplayground.com/x/EgBS)
+
+2. Click **"Run"** to simulate the testbench.
+
+3. **Make sure "Open EPWave after run" is checked** under Tools & Simulators
