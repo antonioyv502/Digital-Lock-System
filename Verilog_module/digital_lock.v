@@ -6,14 +6,16 @@ module digital_lock (clk, reset, x, y);
   output reg y;
   
     // Defining the states
-    typedef enum logic [1:0] {
-        S0 = 2'b00,
-        S1 = 2'b01,
-        S2 = 2'b10,
-        S3 = 2'b11
-    } state;
+    //typedef enum logic [1:0] {
+        //S0 = 2'b00,
+        //S1 = 2'b01,
+        //S2 = 2'b10,
+        //S3 = 2'b11
+    //} state;
 
-    state current_state, next_state;
+    //state current_state, next_state;
+
+  
   
   // State transition logic (clocked)
    always @(posedge clk or posedge reset) begin
@@ -55,7 +57,7 @@ module digital_lock (clk, reset, x, y);
 end
   
   
-  //Output
+  //Output logic 
    always @(posedge clk or posedge reset) begin
         if (reset)
             y <= 1'b0;  //if reset goes high, y is 0
