@@ -32,8 +32,8 @@ This waveform shows the FSM receiving incorrect inputs at first, keeping the loc
 ![ALU Waveform](./Waveforms/Digital_Lock_Invalid_Inputs_Waveform.png)
 
 ## Moore FSM Schematic
-The FSM unlocks on the input sequence: 011 → 111 → 101.
-![FSM Diagram](Schematic/Schematic.png)
+The FSM unlocks on the input sequence: 011 → 111 → 101. This schematic was created in CircuitVerse. 
+![FSM Diagram](Schematic/Schematic.png) 
 
 
 ## How to Run
