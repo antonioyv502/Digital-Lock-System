@@ -44,3 +44,5 @@ The FSM unlocks on the input sequence: 011 → 111 → 101. This schematic was c
 2. Click **"Run"** to simulate the testbench.
 
 3. **Make sure "Open EPWave after run" is checked** under Tools & Simulators
+
+
