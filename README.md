@@ -48,4 +48,4 @@ The FSM unlocks on the input sequence: 011 → 111 → 101. This schematic was c
 
 ## 🎥 Project Demo
 
-[![Watch the video](https://img.youtube.com/vi/X8O-HMeY7Dg/0.jpg)](https://youtu.be/X8O-HMeY7Dg)
+[![Watch the video](https://img.youtube.com/vi/X8O-HMeY7Dg/maxresdefault.jpg)](https://youtu.be/X8O-HMeY7Dg)
