@@ -6,6 +6,7 @@ This project presents the design and implementation of a Moore finite state mach
 - Resettable FSM using a `reset` signal
 - `y` output (e.g., LED) goes HIGH when unlocked
 - Verified with a comprehensive testbench and waveform simulation
+- Hardware implementation in PSoC Creator behaves exactly like the Verilog simulation
 
 ## FSM States and Transitions
 
