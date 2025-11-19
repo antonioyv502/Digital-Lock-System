@@ -36,7 +36,7 @@ The FSM unlocks on the input sequence: 011 → 111 → 101. This schematic was c
 ![FSM Diagram](Schematic/Schematic.png) 
 
 ## Top Design  in PSoC Creator
-![FSM Diagram](Schematic/PSoC_TopDesign.png) 
+![FSM Diagram](Schematic/PSoC_Top_Design.png) 
 
 ## How to Run
 
