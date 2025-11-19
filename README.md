@@ -32,9 +32,7 @@ This waveform shows the FSM receiving incorrect inputs at first, keeping the loc
 
 ![ALU Waveform](./Waveforms/Digital_Lock_Invalid_Inputs_Waveform.png)
 
-## Moore FSM Schematic
-The FSM unlocks on the input sequence: 011 → 111 → 101. This schematic was created in CircuitVerse. 
-![FSM Diagram](Schematic/Schematic.png) 
+
 
 ## Top Design in PSoC Creator
 ![PSoC Top Design](Schematic/PSoC_Top_Design.png) 
@@ -48,6 +46,13 @@ Two digital outputs were used for the outputs of the D flip flop's to
 see the current state. 
 
 ![PSoC Pins](Schematic/PSoC_Pins.png) 
+
+
+
+## Moore FSM Schematic
+The FSM unlocks on the input sequence: 011 → 111 → 101. This schematic was created in CircuitVerse. 
+![FSM Diagram](Schematic/Schematic.png) 
+
 
 
 ## How to Run
