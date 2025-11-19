@@ -41,9 +41,9 @@ The FSM unlocks on the input sequence: 011 → 111 → 101. This schematic was c
 
 
 ## PSoC Pins
-Below are the pins used for the digital lock sytem on the PSoC5LP. 
+Below are the pins used for the digital lock system on the PSoC5LP. 
 Four digital inputs were used and three digital outputs were used.
-Two digital outpts were used for the outputs of the D flip flop's to 
+Two digital outputs were used for the outputs of the D flip flop's to 
 see the current state. 
 
 ![PSoC Pins](Schematic/PSoC_Pins.png) 
