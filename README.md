@@ -35,8 +35,15 @@ This waveform shows the FSM receiving incorrect inputs at first, keeping the loc
 The FSM unlocks on the input sequence: 011 → 111 → 101. This schematic was created in CircuitVerse. 
 ![FSM Diagram](Schematic/Schematic.png) 
 
-## Top Design  in PSoC Creator
-![FSM Diagram](Schematic/PSoC_Top_Design.png) 
+## Top Design in PSoC Creator
+![PSoC Top Design](Schematic/PSoC_Top_Design.png) 
+
+
+## PSoC Pins
+![PSoC Pins](Schematic/PSoC_Pins.png) 
+Below are the pins used for the digital lock sytem on the PSoC5LP. 
+Four digital inputs were used and three digital ouputs were used. 
+
 
 ## How to Run
 
