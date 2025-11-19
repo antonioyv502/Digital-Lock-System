@@ -35,6 +35,8 @@ This waveform shows the FSM receiving incorrect inputs at first, keeping the loc
 The FSM unlocks on the input sequence: 011 → 111 → 101. This schematic was created in CircuitVerse. 
 ![FSM Diagram](Schematic/Schematic.png) 
 
+## Top Design  in PSoC Creator
+![FSM Diagram](Schematic/PSoC_Schematic.png) 
 
 ## How to Run
 
