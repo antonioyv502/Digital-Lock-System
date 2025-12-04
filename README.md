@@ -43,7 +43,9 @@ This waveform shows the FSM receiving incorrect inputs at first, keeping the loc
 Below are the pins used for the digital lock system on the PSoC5LP. 
 Four digital inputs were used and three digital outputs were used.
 Two digital outputs were used for the outputs of the D flip flop's to 
-see the current state. For the 3 bit input, I used 3 pushbuttons and enabled pulldown resistors in PSoC Creator and connected the other lead of the pushybutton to power. 
+see the current state. For the 3 bit input, I used 3 pushbuttons and 
+enabled pulldown resistors in PSoC Creator and connected the other 
+lead of the pushbutton to power. 
 
 ![PSoC Pins](Schematic/PSoC_Pins.png) 
 
