@@ -50,6 +50,12 @@ lead of the pushbutton to power.
 ![PSoC Pins](Schematic/PSoC_Pins.png) 
 
 
+## Input Pin Configuration
+Below are the configurations for the 3 bit input. I enabled hardware connection and enabled pulldown resistors. 
+
+![PSoC Pins](Schematic/PSoC_Pin_Configuration.png) 
+
+
 
 ## Moore FSM Schematic
 The FSM unlocks on the input sequence: 011 → 111 → 101. This schematic was created in CircuitVerse. 
