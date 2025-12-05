@@ -53,7 +53,7 @@ lead of the pushbutton to power.
 ## Input Pin Configuration
 Below are the configurations for the 3 bit input. I enabled hardware connection and enabled pulldown resistors. 
 
-![PSoC Pins](Schematic/PSoC_Pin_Configuration.png) 
+![PSoC Input Configuration](Schematic/PSoC_Input_Configuration.png) 
 
 
 
