@@ -5,22 +5,22 @@ module digital_lock (clk, reset, x, y);
   input [2:0] x;
   output reg y;
 
-     //SystemVerilog 
-    // Defining the states
-    //typedef enum logic [1:0] {
+     /*SystemVerilog 
+     Defining the states
+    typedef enum logic [1:0] {
         //S0 = 2'b00,
         //S1 = 2'b01,
         //S2 = 2'b10,
         //S3 = 2'b11
-    //} state;
+    } state;*/
   
-    //state current_state, next_state;
+    state current_state, next_state;
 
     // State encoding using localparams
-    localparam S0 = 2'b00,
-               S1 = 2'b01,
-               S2 = 2'b10,
-               S3 = 2'b11;
+    parameter S0 = 2'b00,
+    parameter S1 = 2'b01,
+    parameter S2 = 2'b10,
+    parameter S3 = 2'b11;
 
     // State registers
     reg [1:0] current_state, next_state;
