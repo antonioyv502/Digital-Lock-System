@@ -23,8 +23,8 @@ module digital_lock (clk, reset, x, y);
     parameter S3 = 2'b11;
 
     // State registers
-  reg [1:0] current_state;
-  reg [1:0]  next_state;
+    reg [1:0] current_state;
+    reg [1:0]  next_state;
 
   
   // State transition logic (clocked)
