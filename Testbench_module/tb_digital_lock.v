@@ -5,13 +5,15 @@ module tb_digital_lock;
     reg reset;
     reg [2:0] x;
     wire y;
+    wire [1:0] state;
 
     // Instantiate the digital_lock module
-    digital_lock uut (
+    digital_lock DUT (
         .clk(clk),
         .reset(reset),
         .x(x),
-        .y(y)
+        .y(y),
+        .state(state)
     );
 
     // Clock generation (50 MHz clock)
