@@ -66,10 +66,4 @@ module tb2_digital_lock;
         // Finish simulation
         $finish;
     end
-
 endmodule
-
-
-
-
-
