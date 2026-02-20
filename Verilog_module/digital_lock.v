@@ -71,7 +71,7 @@ end
   
   //Output Combinational logic 
  always @(*) begin
-   y = (current_state == S_3) ? 1'b1 : 1'b0;
+   y = (current_state == S_3) ? 1'b1 : 1'b0; // y only goes high once current state is S3(11)
 end   
 
 endmodule
