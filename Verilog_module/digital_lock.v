@@ -1,9 +1,10 @@
 module digital_lock (clk, reset, x, y);
   
-  input clk;
-  input reset;
-  input [2:0] x;
-  output reg y;
+  input        clk;
+  input        reset;
+  input [2:0]  x;
+  output reg   y;
+  output [1:0] state;
 
      //SystemVerilog 
     //Defining the states
@@ -26,6 +27,8 @@ module digital_lock (clk, reset, x, y);
     reg [1:0] current_state;
     reg [1:0] next_state;
 
+    assign state = current_state; //allows us to be able to see the current state of flip flops
+    
   
   // State transition logic (clocked)
    always @(posedge clk or posedge reset) begin
@@ -69,8 +72,7 @@ end
   
   //Output Combinational logic 
  always @(*) begin
-    y = (current_state == S_3) ? 1'b1 : 1'b0;
+   y = (current_state == S_3) ? 1'b1 : 1'b0;
 end   
 
-endmodule 
-   
+endmodule
