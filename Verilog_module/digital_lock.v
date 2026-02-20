@@ -14,7 +14,6 @@ module digital_lock (clk, reset, x, y);
         S2 = 2'b10,
         S3 = 2'b11
     } state;
-
     state current_state, next_state;*/
 
     //Defining States
