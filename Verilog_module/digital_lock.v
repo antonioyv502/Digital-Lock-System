@@ -24,7 +24,7 @@ module digital_lock (clk, reset, x, y);
 
     // State registers
     reg [1:0] current_state;
-    reg [1:0]  next_state;
+    reg [1:0] next_state;
 
   
   // State transition logic (clocked)
@@ -67,11 +67,10 @@ module digital_lock (clk, reset, x, y);
 end
   
   
-  //Output logic 
-   always @(posedge clk or posedge reset) begin
-        if (reset)
-            y <= 1'b0;  //if reset goes high, y is 0
-        else
-          y <= (current_state == S3) ? 1'b1 : 1'b0; //If current_state is S3 y goes high, else 0
-    end
-endmodule
+  //Output Combinational logic 
+ always @(*) begin
+    y = (current_state == S_3) ? 1'b1 : 1'b0;
+end   
+
+endmodule 
+   
