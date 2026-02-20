@@ -32,7 +32,7 @@ module digital_lock (clk, reset, x, y);
   // State transition logic (clocked)
    always @(posedge clk or posedge reset) begin
         if (reset)
-            current_state <= S0;
+            current_state <= S0; //allows us to set to a known state
         else
             current_state <= next_state;
     end
@@ -61,7 +61,7 @@ module digital_lock (clk, reset, x, y);
                 next_state = S0;
 
         S3: 
-            next_state = S0; 
+            next_state = S0; //
 
         default: 
             next_state = S0;
