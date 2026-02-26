@@ -6,7 +6,7 @@ output [9:0] LEDR;
 
 wire clk;
 
-  assign clk = ~ KEY[0]; // pushbutton is is now active high
+assign clk = ~ KEY[0]; // pushbutton is is now active high
 
 digital_lock U1 (.clk(clk)]), .reset(SW[0]), .x(SW[4:2]), .y(LEDR[0]),  .state(LEDR[3:2]));
 
