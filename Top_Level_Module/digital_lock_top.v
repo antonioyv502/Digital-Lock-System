@@ -1,6 +1,6 @@
 module digital_lock_top(KEY, SW, LEDR);
 
-input  [1:0] KEY;
+input  [1:0] KEY; //pushbuttons 
 input  [9:0] SW;
 output [9:0] LEDR; 
 
