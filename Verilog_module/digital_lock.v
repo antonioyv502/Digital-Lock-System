@@ -1,4 +1,4 @@
-module digital_lock (clk, reset, x, y);
+module digital_lock (clk, reset, x, y, state);
   
   input        clk;
   input        reset;
