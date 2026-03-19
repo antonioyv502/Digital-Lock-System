@@ -57,9 +57,19 @@ module tb_digital_lock;
       
        x=3'b100; //Going back to S0
   	   #20;
-      
+       
+        if (state == 2'b11 && y == 1'b1) begin
+            $display("PASS @ %0t: unlocked correctly", $time);
+        end
+            
+        else if (state != 2'b11 && y == 1'b1) begin
+                $display("ERROR @ %0t: y HIGH in wrong state", $time);
+                errors = errors + 1;
+        end
+        
+        $display("TEST FAILED with %0d errors", errors);
+
         // Finish simulation
         $finish;
     end
-
 endmodule
