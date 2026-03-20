@@ -1,3 +1,5 @@
+`timescale 1ns / 100ps
+
 module tb_digital_lock;
 
     // Testbench signals
@@ -15,12 +17,36 @@ module tb_digital_lock;
         .y(y),
         .state(state)
     );
+    
+    integer errors = 0;
 
     // Clock generation (50 MHz clock)
     always begin
         #10 clk = ~clk;  // Toggle clock every 10 time units (50 MHz)
     end
 
+    task apply_and_check;
+        input [2:0] in;
+        input [1:0] expected_state;
+        input expected_y;
+    
+    begin 
+        x = in;
+        #20; //Wait 1 clock cycle
+            
+        if(state != expected_state || y != expected_y) begin 
+            $display("Error @ %0t | x=%b | state=%b y=%b | Got: state=%b y=%b", 
+                      $time, in, expected_state, expected_y, state, y);
+            errors = errors + 1;
+            
+        end else begin 
+            $display("Pass @ %0t | x=%b | state=%b y=%b" , $time, in, state, y);
+        end 
+    end
+    endtask
+        
+    
+    
     // Test sequence
     initial begin
         // Initialize signals
@@ -28,7 +54,7 @@ module tb_digital_lock;
         reset = 0;
         x = 3'b000;
 
-        $dumpvars(0, tb_digital_lock);     // Dump all variables for the top level
+    
 
         // Apply reset
         reset = 1;
@@ -36,38 +62,21 @@ module tb_digital_lock;
         reset = 0;
         
         // Test sequence
-        x = 3'b011; // Transition to state S1
-        #20;
-        x = 3'b111; // Transition to state S2
-        #20;
-        x = 3'b101; // Transition to state S3
-        #20;
-        x = 3'b000; // Reset back to state S0
-        #20;
+        apply_and_check(3'b011, 2'b01, 1'b0); //Transition to S1
+        apply_and_check(3'b111, 2'b10, 1'b0); //Transition to S2
+        apply_and_check(3'b101, 2'b11, 1'b1); //Transition to S3
         
-        // Test with invalid inputs to see behavior (remain in S0)
-        x = 3'b100;
-        #20;
+        apply_and_check(3'b000, 2'b00, 1'b0); //Transition to S0
+        apply_and_check(3'b100, 2'b00, 1'b0); //Stay in S0, testing to see that the system rejects invalid inputs
         
-        x = 3'b011; // Transition to S1 again
-        #20;
-
-       x= 3'b111;  //Transition to S2 again
-       #20;
-      
-       x=3'b100; //Going back to S0
-  	   #20;
+        apply_and_check(3'b011, 2'b01, 1'b0); //Transition to S1
+        apply_and_check(3'b111, 2'b10, 1'b0); //Transition to S2
+        apply_and_check(3'b100, 2'b00, 1'b0); //wrong input, go back to S0
        
-        if (state == 2'b11 && y == 1'b1) begin
-            $display("PASS @ %0t: unlocked correctly", $time);
-        end
-            
-        else if (state != 2'b11 && y == 1'b1) begin
-                $display("ERROR @ %0t: y HIGH in wrong state", $time);
-                errors = errors + 1;
-        end
-        
-        $display("TEST FAILED with %0d errors", errors);
+        if(errors == 0)
+            $display("\n ALL TESTS PASSED");
+        else
+            $display("\n Test FAILED with %0d errors", errors);
 
         // Finish simulation
         $finish;
