@@ -25,16 +25,17 @@ module tb_digital_lock;
         #10 clk = ~clk;  // Toggle clock every 10 time units (50 MHz)
     end
 
+    //Self Checking testbench
     task apply_and_check;
         input [2:0] in;
         input [1:0] expected_state;
         input expected_y;
     
     begin 
-        x = in;
+        x = in; 
         #20; //Wait 1 clock cycle
             
-        if(state != expected_state || y != expected_y) begin 
+        if(state != expected_state || y != expected_y) begin //Comparing state to exptected_state 
             $display("Error @ %0t | x=%b | state=%b y=%b | Got: state=%b y=%b", 
                       $time, in, expected_state, expected_y, state, y);
             errors = errors + 1;
