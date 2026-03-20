@@ -40,7 +40,7 @@ module tb_digital_lock;
                       $time, in, expected_state, expected_y, state, y);
             errors = errors + 1;
             
-        end else begin 
+        end else begin
             $display("Pass @ %0t | x=%b | state=%b y=%b" , $time, in, state, y);
         end 
     end
