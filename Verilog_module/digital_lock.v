@@ -1,7 +1,7 @@
 module digital_lock (clk, reset, x, y, state);
   
   input        clk;
-  input        reset;
+  input        reset; // active high reset
   input [2:0]  x;
   output reg   y;
   output [1:0] state;
@@ -30,12 +30,12 @@ module digital_lock (clk, reset, x, y, state);
     
   
   // State transition logic (clocked)
-   always @(posedge clk or posedge reset) begin
-        if (reset)
-            current_state <= S0; //allows us to set to a known state
+  always @(posedge clk or posedge reset) begin // asynchronous reset 
+        if (reset) //active high reset
+            current_state <= S0; // allows us to set to a known state
         else
             current_state <= next_state;
-    end
+  end
   
   
   // Combinational logic for next state
@@ -64,14 +64,13 @@ module digital_lock (clk, reset, x, y, state);
             next_state = S0; //
 
         default: 
-            next_state = S0;
+            next_state = S0; // 
     endcase
-end
+  end
   
   
   //Output Combinational logic 
  always @(*) begin
    y = (current_state == S_3) ? 1'b1 : 1'b0; // y only goes high once current state is S3(11)
-end   
-
+ end   
 endmodule
