@@ -27,7 +27,7 @@ This project presents the design and implementation of a Moore finite state mach
 | Switch | Signal | Width | Description |
 |-------|--------|-------|------------|
 | SW[0] | Reset | 1-bit | Resets FSM to initial state|
-| SW[4:2] | x | 3-bit | 3-bit input  |
+| SW[3:1] | x | 3-bit | 3-bit input  |
 
 ### Input (Pushbutton)
 
