@@ -20,6 +20,26 @@ This project presents the design and implementation of a Moore finite state mach
 | S2            | NOT 101| S0         | 0             |
 | S3            | X X X  | S0         | 1             | 
 
+## FPGA Pin Mapping 
+
+### Inputs (Switches)
+
+| Switch | Signal | Width | Description |
+|-------|--------|-------|------------|
+| SW[0] | Reset | 1-bit | Resets FSM to Initial State|
+| SW[3:1] | x | 3-bit | 3-bit  |
+| KEY[0] | clk | 3-bit | ALU operation select |
+
+
+
+### Outputs (LEDs)
+
+| LED | Signal | Width | Description |
+|----|--------|-------|------------|
+| LEDR[0] | y | 1-bit | output  |
+| LEDR[4:2] | state | 2-bit | Display current FSM state |
+
+
 
 ## 📸 Simulation Waveform
 
