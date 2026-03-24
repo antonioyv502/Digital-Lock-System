@@ -22,16 +22,14 @@ This project presents the design and implementation of a Moore finite state mach
 
 ## FPGA Pin Mapping 
 
-### Inputs 
-
-#### (Switches)
+### Inputs (Switches)
 
 | Switch | Signal | Width | Description |
 |-------|--------|-------|------------|
 | SW[0] | Reset | 1-bit | Resets FSM to initial state|
 | SW[4:2] | x | 3-bit | 3-bit input  |
 
-#### (Pushbuttons)
+### Input (Pushbutton)
 
 | Switch | Signal | Description |
 |-------|--------|--------------|
