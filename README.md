@@ -30,13 +30,18 @@ This project presents the design and implementation of a Moore finite state mach
 | SW[4:2] | x | 3-bit | 3-bit input  |
 | KEY[0] | clk |  | clock signal |
 
+### Inputs (Pushbutton)
+
+| Switch | Signal | Description |
+|-------|--------|--------------|
+| KEY[0] | clk   | clock signal |
 
 
 ### Outputs (LEDs)
 
 | LED | Signal | Width | Description |
 |----|--------|-------|------------|
-| LEDR[0] | y | 1-bit | output when correct sequence is entered   |
+| LEDR[0] | y | 1-bit | Output when correct sequence is entered (3 → 7 → 5) |
 | LEDR[3:2] | state | 2-bit | Display current FSM state |
 
 
