@@ -33,8 +33,14 @@ This waveform shows the FSM receiving incorrect inputs at first, keeping the loc
 ![Waveform2](./Waveforms/digital_lock_waveform2.png)
 
 
+## FPGA Implementation 
+
+![State1](./FPGA_Implementation/Digital_Lock_state1.png)
 
 
+![State2](./FPGA_Implementation/Digital_Lock_state2.png)
+
+![State3](./FPGA_Implementation/Digital_Lock_state3.png)
 
 
 
