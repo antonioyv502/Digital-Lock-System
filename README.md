@@ -26,9 +26,9 @@ This project presents the design and implementation of a Moore finite state mach
 
 | Switch | Signal | Width | Description |
 |-------|--------|-------|------------|
-| SW[0] | Reset | 1-bit | Resets FSM to Initial State|
-| SW[3:1] | x | 3-bit | 3-bit  |
-| KEY[0] | clk | 3-bit | ALU operation select |
+| SW[0] | Reset | 1-bit | Resets FSM to initial state|
+| SW[4:2] | x | 3-bit | 3-bit input  |
+| KEY[0] | clk |  | clock signal |
 
 
 
@@ -36,8 +36,8 @@ This project presents the design and implementation of a Moore finite state mach
 
 | LED | Signal | Width | Description |
 |----|--------|-------|------------|
-| LEDR[0] | y | 1-bit | output  |
-| LEDR[4:2] | state | 2-bit | Display current FSM state |
+| LEDR[0] | y | 1-bit | output when correct sequence is entered   |
+| LEDR[3:2] | state | 2-bit | Display current FSM state |
 
 
 
