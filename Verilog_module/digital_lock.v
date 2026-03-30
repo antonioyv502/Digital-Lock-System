@@ -17,9 +17,9 @@ module digital_lock (clk, reset, x, y, state);
     state current_state, next_state;*/
 
     //Defining States
-    parameter S0 = 2'b00,
-    parameter S1 = 2'b01,
-    parameter S2 = 2'b10,
+    parameter S0 = 2'b00;
+    parameter S1 = 2'b01;
+    parameter S2 = 2'b10;
     parameter S3 = 2'b11;
 
     // State registers
@@ -71,6 +71,6 @@ module digital_lock (clk, reset, x, y, state);
   
   //Output Combinational logic 
  always @(*) begin
-   y = (current_state == S_3) ? 1'b1 : 1'b0; // y only goes high once current state is S3(11)
+   y = (current_state == S3) ? 1'b1 : 1'b0; // y only goes high once current state is S3(11)
  end   
 endmodule
