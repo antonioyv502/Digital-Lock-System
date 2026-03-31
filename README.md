@@ -59,7 +59,7 @@ This waveform shows the FSM receiving incorrect inputs at first, keeping the loc
 
 ## FPGA Implementation 
 
-In this image the FSM transitions to State 1 after receiving the first correct input (3) via onbaord switches. The LED output reflects the state change, confirming successful entry of the first digit.
+In this image the FSM transitions to State 1 after receiving the first correct input (3) via onboard switches. The LED output reflects the state change, confirming successful entry of the first digit.
 ![State1](./FPGA_Implementation/Digital_Lock_state1.png)
 
 
