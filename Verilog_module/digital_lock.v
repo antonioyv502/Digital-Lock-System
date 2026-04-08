@@ -1,24 +1,15 @@
 module digital_lock(clk, reset, x, y, state, pulse_led);
   
-  input        clk;   //clock signal
-  input        reset; //Aysnchronous active high reset
-  input [2:0]  x;     //3 bit input 
-  output reg   y;
-  output [1:0] state;
-  output       pulse_led;
+    input        clk;   //clock signal
+    input        reset; //Aysnchronous active high reset
+    input [2:0]  x;     //3 bit input 
+    output reg   y;
+    output [1:0] state;
+    output       pulse_led;
   
-    // Defining the states
-  	//System Verilog 
-    /*typedef enum logic [1:0] {
-        S0 = 2'b00,
-        S1 = 2'b01,
-        S2 = 2'b10,
-        S3 = 2'b11
-    } state;
-
-    state current_state, next_state;*/
+    //Clock = 50Mhz 
     
-    parameter MAX_COUNT = 100_000_000; // 2 second 
+    parameter MAX_COUNT = 100_000_000; // 2 seconds 
     reg [26:0] counter;
     reg pulse = 0;
 
@@ -60,7 +51,7 @@ module digital_lock(clk, reset, x, y, state, pulse_led);
     // State transition logic (clocked)
     always @(posedge clk or posedge reset) begin  //active high reset
         if (reset)
-            current_state <= S_0;   
+            current_state <= S_0;
         else if (pulse)
             current_state <= next_state;
     end
