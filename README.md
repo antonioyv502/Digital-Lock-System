@@ -31,9 +31,9 @@ This project presents the design and implementation of a Moore finite state mach
 
 ### Input (Pushbutton)
 
-| Switch | Signal | Description |
+| Clock | Signal | Description |
 |-------|--------|--------------|
-| KEY[0] | clk   | clock signal |
+| MAX10_CLK1_50 | clk   | clock signal @ 50MHz |
 
 
 ### Outputs (LEDs)
