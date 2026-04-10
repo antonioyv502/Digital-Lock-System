@@ -5,15 +5,15 @@ module digital_lock(clk, reset, x, y, state, pulse_led);
     input [2:0]  x;     //3 bit input 
     output reg   y;
     output [1:0] state;
-    output       pulse_led;
   
-    //Clock = 50Mhz 
+    //Clock = 50MHz 
+    //50MHz = 50,000,000 cycles per second 
+    // 2 seconds @ 50MHZ = 50,000,000 * 2 = 100,000,000
     
-    parameter MAX_COUNT = 100_000_000; // 2 seconds 
+    parameter MAX_COUNT = 100_000_000; 
     reg [26:0] counter;
     reg pulse = 0;
 
-    assign pulse_led = pulse;
 
     
     //Counter and pulse generation
@@ -51,7 +51,7 @@ module digital_lock(clk, reset, x, y, state, pulse_led);
     // State transition logic (clocked)
     always @(posedge clk or posedge reset) begin  //active high reset
         if (reset)
-            current_state <= S_0;
+            current_state <= S_0; //Reset to iniital state
         else if (pulse)
             current_state <= next_state;
     end
@@ -64,19 +64,19 @@ module digital_lock(clk, reset, x, y, state, pulse_led);
                 if (x == 3'b011)
                     next_state = S_1;
                 else
-                    next_state = S_0;
+                    next_state = S_0; //Reset to initial state
     
             S_1: 
                 if (x == 3'b111)
                     next_state = S_2;
                 else
-                    next_state = S_0;
+                    next_state = S_0; //Reset to initial state
     
             S_2: 
                 if (x == 3'b101)
                     next_state = S_3;
                 else
-                    next_state = S_0;
+                    next_state = S_0; //Reset to initial state 
     
             S_3: 
                 next_state = S_0; 
