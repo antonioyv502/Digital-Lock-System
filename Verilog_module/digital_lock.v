@@ -1,4 +1,4 @@
-module digital_lock(clk, reset, x, y, state, pulse_led);
+module digital_lock(clk, reset, x, y, state);
   
     input        clk;   //clock signal
     input        reset; //Aysnchronous active high reset
