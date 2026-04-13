@@ -1,5 +1,5 @@
 # Digital-Lock-System (3-bit Input Moore FSM)
-This project presents the design and implementation of a Moore finite state machine (FSM)-based digital lock system using Verilog. The system is configured to unlock only upon receiving a specific sequence of 3-bit binary inputs. The design was verified using a testbench that simulated the lock’s behavior across eight different test cases. These cases included both valid and invalid input sequences to ensure the system transitions correctly between states and behaves as expected under all conditions. The design was fully implennted on a Max DE-10 Lite FPGA Board.
+This project presents the design and implementation of a Moore finite state machine (FSM)-based digital lock system using Verilog. The system is configured to unlock only upon receiving a specific sequence of 3-bit binary inputs. The design was verified using a testbench that simulated the lock’s behavior across eight different test cases. These cases included both valid and invalid input sequences to ensure the system transitions correctly between states and behaves as expected under all conditions. The design was fully implemented on a Max DE-10 Lite FPGA Board.
 
 ## 🔧 Features
 - Unlocks only on a **precise 3-input sequence**: `011 → 111 → 101`
