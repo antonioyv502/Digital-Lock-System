@@ -19,11 +19,11 @@ module digital_lock(clk, reset, x, y, state);
     //Counter and pulse generation
     always @(posedge clk or posedge reset) begin
         if (reset) begin
-            counter <= 0;
-            pulse <= 0;
+            counter <= 0; //set counter to zero
+            pulse <= 0;   //set pulse to zero
         end else if (counter == MAX_COUNT) begin
-            counter <= 0; 
-            pulse <= 1;       
+            counter <= 0; //reset counter when MAX_COUNT is reached
+            pulse <= 1;   //set pulse to 1    
         end else begin
             counter <= counter + 1;
             pulse <= 0;      
