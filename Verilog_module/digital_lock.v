@@ -25,15 +25,15 @@ module digital_lock(clk, reset, x, y, state);
             counter <= 0; //reset counter when MAX_COUNT is reached
             pulse <= 1;   //set pulse to 1    
         end else begin
-            counter <= counter + 1;
-            pulse <= 0;      
+            counter <= counter + 1;  // increment counter each clock cycle
+            pulse <= 0;  // keep pulse low until counter reaches MAX_COUNT again    
         end
     end
 
     
     
    
-    //Defining States
+    // Defining States
     parameter S_0 = 2'b00;  
     parameter S_1 = 2'b01;
     parameter S_2 = 2'b10;
@@ -43,7 +43,7 @@ module digital_lock(clk, reset, x, y, state);
     reg [1:0] current_state;
     reg [1:0] next_state;
     
-    //allows us to be able to see the current state of flip flops and helpful for debugging
+    // allows us to be able to see the current state of flip flops and helpful for debugging
     assign state = current_state; 
     
     
@@ -79,7 +79,7 @@ module digital_lock(clk, reset, x, y, state);
                     next_state = S_0; //Reset to initial state 
     
             S_3: 
-                next_state = S_0; 
+                next_state = S_0;     // go back to inital state, input doesn't matter 
     
             default: 
                 next_state = S_0;
