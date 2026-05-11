@@ -52,7 +52,7 @@ This waveform shows the FSM correctly transitioning through each state when the 
 ![Waveform1](./Waveforms/digital_lock_waveform1.png)
 
 
-This waveform shows the FSM receiving incorrect inputs at first, keeping the lock in its initial state. This confirms it correctly rejects invalid sequences. When the correct input sequence is entered afterward, the FSM transitions states and the y output goes high.
+This waveform shows the FSM receiving incorrect input sequences at first, keeping the lock in its initial state. This confirms it correctly rejects invalid sequences. When the correct input sequence is entered afterward, the FSM transitions states and the y output goes high.
 
 ![Waveform2](./Waveforms/digital_lock_waveform2.png)
 
