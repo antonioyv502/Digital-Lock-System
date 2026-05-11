@@ -17,7 +17,7 @@ To address this issue an enable pulse gernerator was implemnted to slow down the
 Instead of slowing down the actual system clock of 50MHz, a counter is used to generate a single enable pulse every 2 seconds:
    - 50,000,000 * 2 = 100,000,000 = 2 seconds 
 
-## FSM States and Transitions
+## FSM State Table
 
 | Current State | Input `x` | Next State | Output `y` | 
 |---------------|--------|------------|---------------|
