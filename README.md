@@ -8,6 +8,15 @@ This project presents the design and implementation of a Moore finite state mach
 - Verified with a comprehensive testbench and waveform simulation
 - Hardware implementation in PSoC Creator behaves exactly like the Verilog simulation
 
+## 50MHz Clock Domain with a 2-Second Enable Pulse
+The FPGA board runs at 50MHz(50,000,000 Hz). If the finite state machine(FSM) were to operate directly on this clock, state transitons would occur extremely fast and would not be observable. 
+
+To address this issue an enable pulse gernerator was implemnted to slow down the the update rate of the FSM. 
+
+### Design Approach 
+Instead of slowing down the actual system clock of 50MHz, a counter is used to generate a single enable pulse every 2 seconds:
+   - 50,000,000 * 2 = 100,000,000 = 2 seconds 
+
 ## FSM States and Transitions
 
 | Current State | Input `x` | Next State | Output `y` | 
