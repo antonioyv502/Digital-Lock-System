@@ -11,7 +11,7 @@ module digital_lock(clk, reset, x, y, state);
     // 2 seconds @ 50MHZ = 50,000,000 * 2 = 100,000,000
     
     parameter MAX_COUNT = 100_000_000; 
-    reg [26:0] counter;
+    reg [27:0] counter;
     reg pulse = 0;
 
 
