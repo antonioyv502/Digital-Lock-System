@@ -16,7 +16,17 @@ To address this issue an enable pulse gernerator was implemnted to slow down the
 ### Design Approach 
 Instead of slowing down the actual system clock of 50MHz, a counter is used to generate a single enable pulse every 2 seconds:
    - 50,000,000 * 2 = 100,000,000 = 2 seconds 
-#
+
+A 27-bit counter increments on every rising edge of the 50MHz clock. When the counter reaches 100,000,000, it resets to zero and generates a single enable pulse.
+
+### Counter Size Selection (27-bit Counter)
+A 27-bit counter is used to implement the 2-second enable pulse.
+This is because a 27-bit unsigned counter can represent values from:
+0 to 2^27 - 1 = 134,217,727
+Since the required terminal count is:
+   - 100,000,000
+a 27-bit counter is sufficient because its maximum value exceeds the required count.
+
 ## FSM State Table
 
 | Current State | Input `x` | Next State | Output `y` | 
