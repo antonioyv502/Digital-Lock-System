@@ -21,7 +21,7 @@ module digital_lock(clk, reset, x, y, state);
         if (reset) begin
             counter <= 0;    //set counter to zero
             pulse   <= 0;   //set pulse to zero
-        end else if (counter == MAX_COUNT) begin
+        end else if (counter == MAX_COUNT - 1) begin
             counter <= 0;    //reset counter when MAX_COUNT is reached
             pulse   <= 1;   //set pulse to 1    
         end else begin
