@@ -12,21 +12,21 @@ module digital_lock(clk, reset, x, y, state);
     
     parameter MAX_COUNT = 100_000_000; 
     reg [27:0] counter;
-    reg pulse = 0;
+    reg        pulse = 0;
 
 
     
     //Counter and pulse generation
     always @(posedge clk or posedge reset) begin
         if (reset) begin
-            counter <= 0; //set counter to zero
-            pulse <= 0;   //set pulse to zero
+            counter <= 0;    //set counter to zero
+            pulse   <= 0;   //set pulse to zero
         end else if (counter == MAX_COUNT) begin
-            counter <= 0; //reset counter when MAX_COUNT is reached
-            pulse <= 1;   //set pulse to 1    
+            counter <= 0;    //reset counter when MAX_COUNT is reached
+            pulse   <= 1;   //set pulse to 1    
         end else begin
             counter <= counter + 1;  // increment counter each clock cycle
-            pulse <= 0;  // keep pulse low until counter reaches MAX_COUNT again    
+            pulse   <= 0;            // keep pulse low until counter reaches MAX_COUNT again    
         end
     end
 
