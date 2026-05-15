@@ -64,7 +64,7 @@ module digital_lock(clk, reset, x, y, state);
     always @(posedge clk or posedge reset) begin  // active high reset
         if (reset)
             current_state <= S_0;
-		else if (pulse)                                     // change to else if (pulse) for hardware implementation
+		else if (pulse)                           // change to else if (pulse) for hardware implementation
             current_state <= next_state;  
     end
   
@@ -102,7 +102,7 @@ module digital_lock(clk, reset, x, y, state);
   
    // Output Combinational logic 
     always @(*) begin
-		  y = (current_state == S_3) ? 1'b1 : 1'b0;  // y only goes high when current state is S_7(3'b111)
+		y = (current_state == S_3) ? 1'b1 : 1'b0;  // y only goes high when current state is S_3(2'b11)
     end   
 endmodule
 	
