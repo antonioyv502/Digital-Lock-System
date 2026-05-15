@@ -13,7 +13,7 @@ module digital_lock(clk, reset, x, y, state);
     parameter MAX_COUNT = 100_000_000; // 2 seconds
     reg [26:0] counter;               // 27 bit counter can hold up to 100,000,000(2 seconds)
     reg pulse = 0;
-	  reg [2:0] error_count;           //counts incorrect sequences
+	reg [2:0] error_count;           //counts incorrect sequences
 
     // Counter and pulse generation
     always @(posedge clk or posedge reset) begin
@@ -91,11 +91,9 @@ module digital_lock(clk, reset, x, y, state);
                 else
                     next_state = S_0;
     
-            S_3: 
-					
-					 next_state = S_0;
+            S_3: 	
+				next_state = S_0;
 						  
-				
             default: 
                 next_state = S_0;
         endcase						
