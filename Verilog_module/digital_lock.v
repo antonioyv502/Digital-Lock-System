@@ -1,7 +1,7 @@
 module digital_lock(clk, reset, x, y, state);
   
     input        clk;   // clock signal(50MHz)
-    input        reset; // Aysnchronous active high reset
+    input        reset; // Asynchronous active high reset
     input [2:0]  x;     // 3 bit input 
     output reg   y;
     output [1:0] state;
@@ -64,7 +64,7 @@ module digital_lock(clk, reset, x, y, state);
     always @(posedge clk or posedge reset) begin  // active high reset
         if (reset)
             current_state <= S_0;
-        else                                     // change to else if (pulse) for hardware implementation
+		else if (pulse)                                     // change to else if (pulse) for hardware implementation
             current_state <= next_state;  
     end
   
