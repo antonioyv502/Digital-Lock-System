@@ -61,7 +61,7 @@ a 27-bit counter is sufficient because its maximum value exceeds the required co
 | LED | Signal | Width | Description |
 |----|--------|-------|------------|
 | LEDR[0] | y | 1-bit | Output when correct sequence is entered (3 → 7 → 5) |
-| LEDR[3:2] | state | 2-bit | Display current FSM state |
+| LEDR[4:2] | state | 2-bit | Display current FSM state |
 
 
 
