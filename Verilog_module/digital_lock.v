@@ -4,14 +4,15 @@ module digital_lock(clk, reset, x, y, state);
     input        reset; // Aysnchronous active high reset
     input [2:0]  x;     // 3 bit input 
     output reg   y;
-    output [1:0] state;
+    output [2:0] state;
 
 	 
 	// Defining States
-    parameter S_0 = 2'b00;  
-    parameter S_1 = 2'b01;
-    parameter S_2 = 2'b10;
-    parameter S_3 = 2'b11;
+    parameter S_0      = 3'b000;  
+    parameter S_1      = 3'b001;
+    parameter S_2      = 3'b010;
+    parameter S_3      = 3'b011;
+	parameter S_LOCKED = 3'b100; // will use for timeout logic
 
 
 	// 50MHz = 50,000,000 = 1 second
@@ -21,9 +22,10 @@ module digital_lock(clk, reset, x, y, state);
 	parameter TIME_OUT  = 200_000_000; // 4 second (will use for timeout logic)
     parameter MAX_COUNT = 100_000_000; // 2 second 
     
+	 
 	// State registers
-    reg [1:0] current_state;
-    reg [1:0] next_state;
+    reg [2:0] current_state;
+    reg [2:0] next_state;
     
     // allows us to be able to see the current state of flip flops and helpful for debugging
     assign state = current_state; 
@@ -31,7 +33,7 @@ module digital_lock(clk, reset, x, y, state);
 	 
     // Counter and 2 second pulse generation logic
 	reg [26:0] counter;               // 27 bit counter can hold up to 100,000,000(2 seconds)
-	reg 	   pulse;
+	reg 			pulse;
 	 
     always @(posedge clk or posedge reset) begin
         if (reset) begin
@@ -67,7 +69,7 @@ module digital_lock(clk, reset, x, y, state);
     always @(posedge clk or posedge reset) begin  // active high reset
         if (reset)
             current_state <= S_0;
-        else if (pulse)                          // change to else if (pulse) for hardware implementation
+        else                             // change to else if (pulse) for hardware implementation
             current_state <= next_state;  
     end
   
@@ -75,6 +77,7 @@ module digital_lock(clk, reset, x, y, state);
     // Input Sequence: 3 → 7 → 5
     // Combinational logic for next state
     always @(*) begin
+		  next_state = S_0;
         case (current_state)
             S_0: 
                 if (x == 3'b011)
@@ -103,7 +106,7 @@ module digital_lock(clk, reset, x, y, state);
     end
   
   
-   // Output Combinational logic 
+    // Output Combinational logic 
     always @(*) begin
 		  y = (current_state == S_3) ? 1'b1 : 1'b0;  // y only goes high when current state is S_3(2'b11)
     end   
