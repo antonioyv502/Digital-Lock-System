@@ -31,7 +31,7 @@ module digital_lock(clk, reset, x, y, state);
 	 
     // Counter and 2 second pulse generation logic
 	reg [26:0] counter;               // 27 bit counter can hold up to 100,000,000(2 seconds)
-	reg 			pulse;
+	reg 	   pulse;
 	 
     always @(posedge clk or posedge reset) begin
         if (reset) begin
