@@ -1,21 +1,38 @@
 module digital_lock(clk, reset, x, y, state);
   
     input        clk;   // clock signal(50MHz)
-    input        reset; // Asynchronous active high reset
+    input        reset; // Aysnchronous active high reset
     input [2:0]  x;     // 3 bit input 
     output reg   y;
     output [1:0] state;
 
-
-	 // 50MHz = 50,000,000 = 1 second
-	 // 2 seonds @ 50MHz = 50,000,000 * 2  = 100,000,000 counts
 	 
-    parameter MAX_COUNT = 100_000_000; // 2 seconds
-    reg [26:0] counter;               // 27 bit counter can hold up to 100,000,000(2 seconds)
-    reg pulse = 0;
-	reg [2:0] error_count;           //counts incorrect sequences
+	// Defining States
+    parameter S_0 = 2'b00;  
+    parameter S_1 = 2'b01;
+    parameter S_2 = 2'b10;
+    parameter S_3 = 2'b11;
 
-    // Counter and pulse generation
+
+	// 50MHz = 50,000,000 = 1 second
+	// 2 seonds  @ 50MHz = 50,000,000 * 2 = 100,000,000 counts
+	// 4 seconds @ 50MHz = 50,000,000 * 4 = 200,000,000 counts
+	 
+	parameter TIME_OUT  = 200_000_000; // 4 second (will use for timeout logic)
+    parameter MAX_COUNT = 100_000_000; // 2 second 
+    
+	// State registers
+    reg [1:0] current_state;
+    reg [1:0] next_state;
+    
+    // allows us to be able to see the current state of flip flops and helpful for debugging
+    assign state = current_state; 
+
+	 
+    // Counter and 2 second pulse generation logic
+	reg [26:0] counter;               // 27 bit counter can hold up to 100,000,000(2 seconds)
+	reg 			pulse;
+	 
     always @(posedge clk or posedge reset) begin
         if (reset) begin
             counter <= 0;    // Reset counter to 0 
@@ -29,25 +46,11 @@ module digital_lock(clk, reset, x, y, state);
         end
     end
 
-
-   
-    // Defining States
-    parameter S_0 = 2'b00;  
-    parameter S_1 = 2'b01;
-    parameter S_2 = 2'b10;
-    parameter S_3 = 2'b11;
-
-
-    // State registers
-    reg [1:0] current_state;
-    reg [1:0] next_state;
-    
-    // allows us to be able to see the current state of flip flops and helpful for debugging
-    assign state = current_state; 
 	 
-
     
-	 // Logic for incorrect sequences
+	 // Logic for incorrect sequence attempts
+	 reg [1:0] error_count; //counts incorrect sequences
+	 
 	 always @ (posedge clk or posedge reset) begin 
 	 	  if (reset) begin 
 	 			error_count <= 0;
@@ -60,11 +63,11 @@ module digital_lock(clk, reset, x, y, state);
 	
     
   
-    // State transition logic (clocked)
+    // State transition logic 
     always @(posedge clk or posedge reset) begin  // active high reset
         if (reset)
             current_state <= S_0;
-		else if (pulse)                           // change to else if (pulse) for hardware implementation
+        else if (pulse)                          // change to else if (pulse) for hardware implementation
             current_state <= next_state;  
     end
   
@@ -91,9 +94,9 @@ module digital_lock(clk, reset, x, y, state);
                 else
                     next_state = S_0;
     
-            S_3: 	
-				next_state = S_0;
-						  
+            S_3: 
+					 next_state = S_0;
+						  	
             default: 
                 next_state = S_0;
         endcase						
@@ -102,7 +105,7 @@ module digital_lock(clk, reset, x, y, state);
   
    // Output Combinational logic 
     always @(*) begin
-		y = (current_state == S_3) ? 1'b1 : 1'b0;  // y only goes high when current state is S_3(2'b11)
+		  y = (current_state == S_3) ? 1'b1 : 1'b0;  // y only goes high when current state is S_3(2'b11)
     end   
 endmodule
 	
