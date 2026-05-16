@@ -36,7 +36,7 @@ module digital_lock(clk, reset, x, y, state);
 	reg 			pulse;
 	 
     always @(posedge clk or posedge reset) begin
-        if (reset) begin
+    	if (reset) begin
             counter <= 0;    // Reset counter to 0 
             pulse   <= 0;    // Pulse starts at 0
         end else if (counter == MAX_COUNT - 1) begin
@@ -50,18 +50,18 @@ module digital_lock(clk, reset, x, y, state);
 
 	 
     
-	 // Logic for incorrect sequence attempts
-	 reg [1:0] error_count; //counts incorrect sequences
+	// Logic for incorrect sequence attempts
+	reg [1:0] error_count; //counts incorrect sequences
 	 
-	 always @ (posedge clk or posedge reset) begin 
-	 	  if (reset) begin 
-	 			error_count <= 0;
-	 	  end else if (current_state == S_3) begin 
-	 			error_count <= 0;
-	 	  end else if (current_state != S_0 && next_state == S_0) begin 
-	  			error_count <= error_count + 1;
-	     end 
-	 end
+	always @ (posedge clk or posedge reset) begin 
+		if (reset) begin 
+			error_count <= 0;
+		end else if (current_state == S_3) begin 
+			error_count <= 0;	
+		end else if (current_state != S_0 && next_state == S_0) begin 
+			error_count <= error_count + 1;
+	  	end 
+	end
 	
     
   
