@@ -13,7 +13,7 @@ assign HEX0 = (state == 2'b00) ? 8'hC0:
 				                         8'hC0;
 */
 
-digital_lock U1 (.clk(MAX10_CLK1_50), .reset(SW[0]), .x(SW[3:1]), .y(LEDR[0]),  .state(LEDR[3:2]));
+digital_lock U1 (.clk(MAX10_CLK1_50), .reset(SW[0]), .x(SW[3:1]), .y(LEDR[0]),  .state(LEDR[4:2]));
 
 
 // Will use 7-segment display to display current state 
