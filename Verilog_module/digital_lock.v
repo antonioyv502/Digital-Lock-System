@@ -96,8 +96,9 @@ module digital_lock(clk, reset, x, enter, mode, y, state);
     // Input Sequence: 3 → 7 → 5
     // Combinational logic for next state
     always @(*) begin
-		
-		if (mode == 1'b0) begin 
+		if (mode) begin 
+			next_state = S_0;
+		end else begin 
 			case (current_state) 
 				S_0:
 					if (x == password[0])
@@ -121,7 +122,7 @@ module digital_lock(clk, reset, x, enter, mode, y, state);
 				default: begin 
 					next_state = S_0;
 				end 
-			endcase 
+			endcase
 		end 
     end
   
