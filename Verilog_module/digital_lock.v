@@ -14,13 +14,10 @@ module digital_lock(clk, reset, x, enter, mode, y, state);
     parameter S_1      = 3'b001;
     parameter S_2      = 3'b010;
     parameter S_3      = 3'b011;
-	parameter S_LOCKED = 3'b100; // will use for timeout logic
 
 
 	// 50MHz = 50,000,000 = 1 second
 	// 2 seonds  @ 50MHz = 50,000,000 * 2 = 100,000,000 counts
-
-	 
     parameter MAX_COUNT = 100_000_000; // 2 second 
     
 	 
