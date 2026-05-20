@@ -62,9 +62,9 @@ module digital_lock(clk, reset, x, enter, mode, y, state);
 			password[1] <= 3'b111;
 			password[2] <= 3'b101;
 		end else if (mode && enter) begin 
-			password[postion] <= x;
+			password[position] <= x;
 
-			if (postion == 2)
+			if (position == 2)
 				position <= 0;
 			else 
 				position <= position + 1;
