@@ -1,8 +1,10 @@
-module digital_lock(clk, reset, x, y, state);
+module digital_lock(clk, reset, x, enter, mode, y, state);
   
     input        clk;   // clock signal(50MHz)
     input        reset; // Aysnchronous active high reset
     input [2:0]  x;     // 3 bit input 
+	input        enter;
+	input        mode;  // 1: Program password, 0: unlock
     output reg   y;
     output [2:0] state;
 
@@ -17,9 +19,8 @@ module digital_lock(clk, reset, x, y, state);
 
 	// 50MHz = 50,000,000 = 1 second
 	// 2 seonds  @ 50MHz = 50,000,000 * 2 = 100,000,000 counts
-	// 4 seconds @ 50MHz = 50,000,000 * 4 = 200,000,000 counts
+
 	 
-	parameter TIME_OUT  = 200_000_000; // 4 second (will use for timeout logic)
     parameter MAX_COUNT = 100_000_000; // 2 second 
     
 	 
@@ -30,10 +31,13 @@ module digital_lock(clk, reset, x, y, state);
     // allows us to be able to see the current state of flip flops and helpful for debugging
     assign state = current_state; 
 
+	// Password Storage 
+	reg [2:0] password [0:2];
+	reg [1:0] position; 
 	 
     // Counter and 2 second pulse generation logic
 	reg [26:0] counter;               // 27 bit counter can hold up to 100,000,000(2 seconds)
-	reg 			pulse;
+	reg 	   pulse;
 	 
     always @(posedge clk or posedge reset) begin
     	if (reset) begin
@@ -48,7 +52,25 @@ module digital_lock(clk, reset, x, y, state);
         end
     end
 
-	 
+	// Password Programming Logic 
+	always @ (posedge clk or posedge reset) begin 
+		if (reset) begin
+			position <= 0;
+
+			// default password 
+			password[0] <= 3'b011;
+			password[1] <= 3'b111;
+			password[2] <= 3'b101;
+		end else if (mode && enter) begin 
+			password[postion] <= x;
+
+			if (postion == 2)
+				position <= 0;
+			else 
+				position <= position + 1;
+		end 
+	end 
+	
     
 	// Logic for incorrect sequence attempts
 	reg [1:0] error_count; //counts incorrect sequences
@@ -77,32 +99,33 @@ module digital_lock(clk, reset, x, y, state);
     // Input Sequence: 3 → 7 → 5
     // Combinational logic for next state
     always @(*) begin
-		  next_state = S_0;
-        case (current_state)
-            S_0: 
-                if (x == 3'b011)
-                    next_state = S_1;
-                else
-                    next_state = S_0;
-    
-            S_1: 
-                if (x == 3'b111)
-                    next_state = S_2;
-                else
-                    next_state = S_0;
-    
-            S_2: 
-                if (x == 3'b101)
-                    next_state = S_3;
-                else
-                    next_state = S_0;
-    
-            S_3: 
-					 next_state = S_0;
-						  	
-            default: 
-                next_state = S_0;
-        endcase						
+		
+		if (mode == 1'b0) begin 
+			case (current_state) 
+				S_0:
+					if (x == password[0])
+						next_state = S_1;
+					else 
+						next_state = S_0;
+
+				S_1:
+					if (x == password[1])
+						next_state = S_2;
+					else 
+						next_state = S_0;
+				S_2:
+					if (x == password[2])
+						next_state = S_3;
+					else 
+						next_state = S_0;
+				S_3:
+					next_state = S_0;
+					
+				default: begin 
+					next_state = S_0;
+				end 
+			endcase 
+		end 
     end
   
   
