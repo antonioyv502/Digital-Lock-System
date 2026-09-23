@@ -6,12 +6,12 @@ This project presents the design and implementation of a Moore finite state mach
 - Resettable FSM using a `reset` signal
 - `y` output (e.g., LED) goes HIGH when unlocked
 - Verified with a comprehensive testbench and waveform simulation
-- Hardware implementation in PSoC Creator behaves exactly like the Verilog simulation
+
 
 ## 50MHz Clock Domain with a 2-Second Enable Pulse
 The FPGA board runs at 50MHz(50,000,000 Hz). If the finite state machine(FSM) were to operate directly on this clock, state transitons would occur extremely fast and would not be observable. 
 
-To address this issue an enable pulse gernerator was implemnted to slow down the the update rate of the FSM. 
+To address this issue an enable pulse generator was implemented to slow down the update rate of the FSM. 
 
 ### Design Approach 
 Instead of slowing down the actual system clock of 50MHz, a counter is used to generate a single enable pulse every 2 seconds:
@@ -27,6 +27,35 @@ Since the required terminal count is:
    - 100,000,000
 
 a 27-bit counter is sufficient because its maximum value exceeds the required count.
+
+
+## 7 Segment Display State Decoder 
+To make the FSM states easier to visualize, I added a 7-segment display module to the digital lock. Instead of relying only on LEDs, the 7-segment display decodes the current FSM state and displays its corresponding state number.
+
+The FPGA's 7-segment display uses an **active-low configuration**, meaning:
+
+- `0` → Segment ON
+- `1` → Segment OFF
+
+The 7-segment display uses an 8-bit encoding format:
+
+`dp g f e d c b a`
+
+
+Each FSM state is assigned a corresponding 7-segment display pattern:
+
+| FSM State | Display | 8-bit Encoding |
+|-----------|---------|----------------|
+| State 0   | `0`     | `1100 0000`    |
+| State 1   | `1`     | `1111 1001`    |
+| State 2   | `2`     | `1010 0100`    |
+| State 3   | `3`     | `1011 0000`    |
+
+I also added a **second 7-segment display** to indicate the overall lock status:
+
+- **`L`** → The lock is **locked** and the FSM has not reached the final state.
+- **`U`** → The lock is **unlocked** and the FSM has reached the final state.
+
 
 ## FSM State Table
 
