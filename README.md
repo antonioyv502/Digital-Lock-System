@@ -44,12 +44,12 @@ The 7-segment display uses an 8-bit encoding format:
 
 Each FSM state is assigned a corresponding 7-segment display pattern:
 
-| FSM State | Display | 8-bit Encoding |
-|-----------|---------|----------------|
-| State 0   | `0`     | `1100 0000`    |
-| State 1   | `1`     | `1111 1001`    |
-| State 2   | `2`     | `1010 0100`    |
-| State 3   | `3`     | `1011 0000`    |
+| FSM State | Display | 8-bit Encoding |  HEX  |
+|-----------|---------|----------------|-------|
+| State 0   | `0`     | `1100 0000`    | 0xC0  |
+| State 1   | `1`     | `1111 1001`    | 0xF9  |
+| State 2   | `2`     | `1010 0100`    | 0xA4  |
+| State 3   | `3`     | `1011 0000`    | 0xB0  |
 
 I also added a **second 7-segment display** to indicate the overall lock status:
 
