@@ -112,15 +112,15 @@ This waveform shows the FSM receiving incorrect input sequences at first, keepin
 
 ## FPGA Implementation 
 
-In this image the FSM transitions to State 1 after receiving the first correct input (3) via onboard switches. The 7 segment display output reflects the state change, confirming successful entry of the first digit.
+In this image the FSM transitions to State 1 after receiving the first correct input (3) via onboard switches. The 7-segment display reflects the current FSM state, confirming that the first digit was entered successfully. The display also shows **`L`** to indicate that the digital lock remains locked.
 ![State1](./FPGA_Implementation/FPGA_State_1.png)
 
 
-In this image the FSM advances to State 2 after the second correct input (7) is entered using the switches. The 7 segment displays the update to indicate the new state. 
+In this image the FSM advances to State 2 after the second correct input (7) is entered using the switches. The 7-segment display reflects the current FSM state, confirming that the second digit was entered successfully while the lock remains locked.
 ![State2](./FPGA_Implementation/FPGA_State_2.png)
 
 
-In this image the FSM reaches the final state after the complete sequence (3 → 7 → 5) is entered through the switches. The output signal goes HIGH, activating an LED to indicate the lock has been successfully opened. Also 
+In this image the FSM reaches State 3, after the complete sequence (3 → 7 → 5) is entered through the switches. The 7-segment display indicates **`U`**, confirming that the correct sequence was entered and the digital lock has been unlocked.
 ![State3](./FPGA_Implementation/FPGA_State_3.png)
 
 
