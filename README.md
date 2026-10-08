@@ -78,6 +78,9 @@ I also added a **second 7-segment display** to indicate the overall lock status:
 ![FSM_State_Diagram](Schematic/State_Diagram.png) 
 
 
+## FSM Block Diagram
+![FSM_Block_Diagram](Schematic/FSM_Block_Diagram.png) 
+
 ## FPGA Pin Mapping 
 
 ### Inputs (Switches)
