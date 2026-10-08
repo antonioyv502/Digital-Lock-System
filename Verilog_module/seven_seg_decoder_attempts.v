@@ -17,7 +17,7 @@ module seven_seg_decoder_attempts(attempts, hex);
 			3'b110: hex = 8'h82; // attempts 110, display "6" on hex display
 			3'b111: hex = 8'hF8; // attempts 111, display "7" on hex display
 			
-			default: hex = 8'hC0; 
+			default: hex = 8'hC0; // default state display "0"
 			
 		endcase
 	end
