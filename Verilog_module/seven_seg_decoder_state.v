@@ -1,17 +1,18 @@
 module seven_seg_decoder_state(state, hex);
 
 	input  [1:0] state; // 2 bit FSM state 
-	output [7:0] hex;   // 8 bit output for the 7 segment display 
+	output [7:0] hex;   // 8 bit output for the 7-segment display 
 	
 	reg [7:0] hex;
-	
+
+	// Update HEX display whenever "state" changes
 	always @(*) begin 
 		case(state)
 		
-			2'b00: hex = 8'hC0; // State 00, display "0" on hex display
-			2'b01: hex = 8'hF9; // State 01, display "1" on hex display
-			2'b10: hex = 8'hA4; // State 10, display "2" on hex display
-			2'b11: hex = 8'hB0; // State 11, display "3" on hex display
+			2'b00: hex = 8'hC0; // Display "0" on HEX display
+			2'b01: hex = 8'hF9; // Display "1" on HEX display
+			2'b10: hex = 8'hA4; // Display "2" on HEX display
+			2'b11: hex = 8'hB0; // Display "3" on HEX display
 			
 			default: hex = 8'hC0; // Default, display "0"
 			
