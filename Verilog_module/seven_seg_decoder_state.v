@@ -1,3 +1,15 @@
+/* 
+Seven-Segment Display Decoder for FSM State
+This module takes a 2-bit binary value representing the state of the FSM and converts it into an 8-bit 
+pattern that controls a seven-segment HEX display.
+Each FSM state is represented by a different number (0-3) on the 
+HEX display.
+The HEX display uses active-low logic, so a 0 turns on an LED 
+segment and a 1 turns off an LED segment.
+*/
+
+
+
 module seven_seg_decoder_state(state, hex);
 
 	input  [1:0] state; // 2 bit FSM state 
