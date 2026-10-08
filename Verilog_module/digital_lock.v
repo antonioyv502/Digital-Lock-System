@@ -35,8 +35,8 @@ module digital_lock(clk, reset, x, y, state, attempt);
 	assign attempt = attempts;
 	 
     // Counter and 2 second pulse generation logic
-	 reg [26:0] counter;               // 27 bit counter can hold up to 100,000,000(2 seconds)
-	 reg 			pulse;
+	reg [26:0] counter;               // 27 bit counter can hold up to 100,000,000(2 seconds)
+	reg 			pulse;
 	 
 	 
     always @(posedge clk or posedge reset) begin
@@ -73,7 +73,7 @@ module digital_lock(clk, reset, x, y, state, attempt);
 	 	 if (reset) begin 
 	 			attempts <= 0;
 	 	 end else if (pulse) begin 
-	 		 if((current_state == S_1 && next_state == S_0) || (current_state == S_2 && next_state == S_0)) begin 
+			 if((current_state == S_1 || current_state == S_0) || (next_state == S_0)) begin 
 	 				attempts <= attempts + 1;
 	 		 end 
 	 	 end  
