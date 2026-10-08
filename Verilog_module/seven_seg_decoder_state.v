@@ -12,8 +12,8 @@ segment and a 1 turns off an LED segment.
 
 module seven_seg_decoder_state(state, hex);
 
-	input  [1:0] state; // 2 bit FSM state 
-	output [7:0] hex;   // 8 bit output for the 7-segment display 
+	input  [1:0] state; // 2-bit FSM state 
+	output [7:0] hex;   // 8-bit output for the 7-segment display 
 	
 	reg [7:0] hex;
 
