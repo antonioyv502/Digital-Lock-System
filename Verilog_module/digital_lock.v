@@ -73,7 +73,7 @@ module digital_lock(clk, reset, x, y, state, attempt);
 	 	 if (reset) begin 
 	 			attempts <= 0;
 	 	 end else if (pulse) begin 
-			 if((current_state == S_1 || current_state == S_0) || (next_state == S_0)) begin 
+			 if((current_state == S_1 || current_state == S_0) && (next_state == S_0)) begin 
 	 				attempts <= attempts + 1;
 	 		 end 
 	 	 end  
