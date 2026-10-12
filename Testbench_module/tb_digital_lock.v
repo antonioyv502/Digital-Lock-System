@@ -62,21 +62,26 @@ module tb_digital_lock;
         reset = 0;
         
         // Test sequence
-        apply_and_check(3'b011, 3'b001, 1'b0);   //Transition to S1
-        apply_and_check(3'b111, 3'b010, 1'b0);   //Transition to S2
-        apply_and_check(3'b101, 3'b011, 1'b1);   //Transition to S3 (unlock)
+        apply_and_check(3'b011, 2'b01, 1'b0);   //Transition to S1
+        apply_and_check(3'b111, 2'b10, 1'b0);   //Transition to S2
+        apply_and_check(3'b101, 2'b11, 1'b1);   //Transition to S3 (unlock)
 
         
-        apply_and_check(3'b000, 3'b000, 1'b0); //Transition to S0 
-        apply_and_check(3'b100, 3'b000, 1'b0); //Stay in S0
+        apply_and_check(3'b000, 2'b00, 1'b0); //Transition to S0 
+        apply_and_check(3'b100, 2'b00, 1'b0); //Stay in S0
         
-        apply_and_check(3'b011, 3'b001, 1'b0); //Transition to S1
-        apply_and_check(3'b111, 3'b010, 1'b0); //Transition to S2
-        apply_and_check(3'b100, 3'b000, 1'b0); //Transition to S0
+        apply_and_check(3'b011, 2'b01, 1'b0); //Transition to S1
+        apply_and_check(3'b111, 2'b10, 1'b0); //Transition to S2
+        apply_and_check(3'b100, 2'b00, 1'b0); //Transition to S0
 		  
-		apply_and_check(3'b011, 3'b001, 1'b0); //Transition to S1
-		apply_and_check(3'b111, 3'b010, 1'b0); //Transition to S2
-		apply_and_check(3'b010, 3'b000, 1'b0); //Transition to S0
+		apply_and_check(3'b011, 2'b01, 1'b0); //Transition to S1
+		apply_and_check(3'b111, 2'b10, 1'b0); //Transition to S2
+		apply_and_check(3'b010, 2'b00, 1'b0); //Transition to S0
+		  
+		apply_and_check(3'b010, 2'b00, 1'b0); //Stay in S0
+		apply_and_check(3'b011, 2'b01, 1'b0); //Transition to S1
+		apply_and_check(3'b111, 2'b10, 1'b0); //Transition to S2
+		apply_and_check(3'b110, 2'b00, 1'b0); //Transition to S0
 		 
         if(errors == 0)
             $display("\n ALL TESTS PASSED");
