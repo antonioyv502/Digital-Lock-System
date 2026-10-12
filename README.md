@@ -110,7 +110,7 @@ I also added a **second 7-segment display** to indicate the overall lock status:
 
 This waveform shows the FSM correctly transitioning through each state when the correct sequence is entered, asserting y = 1 at the end. It also demonstrates how the FSM resets to the initial state when an invalid input is detected mid-sequence:
 
-![Waveform1](./Waveforms/digital_lock_waveform1.png)
+![Waveform1](./Waveforms/digital_lock_waveform3.png)
 
 
 This waveform shows the FSM receiving incorrect input sequences at first, keeping the lock in its initial state. This confirms it correctly rejects invalid sequences. When the correct input sequence is entered afterward, the FSM transitions states and the y output goes high.
@@ -136,17 +136,6 @@ In this image the FSM reaches State 3, after the complete sequence (3 → 7 → 
 ## Moore FSM Schematic
 The FSM unlocks on the input sequence: 011 → 111 → 101. This schematic was created in CircuitVerse. 
 ![FSM Diagram](Schematic/Schematic.png) 
-
-
-
-## How to Run
-
-1. Open the project in **EDA Playground**:  
-   👉 [https://www.edaplayground.com/x/hMpk](https://www.edaplayground.com/x/EgBS)
-
-2. Click **"Run"** to simulate the testbench.
-
-3. **Make sure "Open EPWave after run" is checked** under Tools & Simulators
 
 
 ## 🎥 Project Demo
