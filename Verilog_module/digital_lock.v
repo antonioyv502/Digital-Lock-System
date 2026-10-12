@@ -36,7 +36,7 @@ module digital_lock(clk, reset, x, y, state, attempt);
 	 
     // Counter and 2 second pulse generation logic
 	reg [26:0] counter;               // 27 bit counter can hold up to 100,000,000(2 seconds)
-	reg 			pulse;
+	reg 	   pulse;
 	 
 	 
     always @(posedge clk or posedge reset) begin
@@ -52,10 +52,7 @@ module digital_lock(clk, reset, x, y, state, attempt);
         end
     end
 
-	 
-
-	
-    
+	   
   
     // State transition logic 
     always @(posedge clk or posedge reset) begin  // active high reset
@@ -73,8 +70,8 @@ module digital_lock(clk, reset, x, y, state, attempt);
 	 	 if (reset) begin 
 	 			attempts <= 0;
 	 	 end else if (pulse) begin 
-			 if((current_state == S_1 || current_state == S_2) && (next_state == S_0)) begin 
-	 				attempts <= attempts + 1;
+		  	 if((current_state != S_3) && (next_state == S_0)) begin 
+	 		 		attempts <= attempts + 1;
 	 		 end 
 	 	 end  
 	 end  
@@ -85,22 +82,11 @@ module digital_lock(clk, reset, x, y, state, attempt);
     always @(*) begin
         case (current_state)
             S_0: 
-                if (x == 3'b011)
-                    next_state = S_1;
-                else
-                    next_state = S_0;
-    
-            S_1: 
-                if (x == 3'b111)
-                    next_state = S_2;
-                else
-                    next_state = S_0;
-    
+				next_state = (x == 3'b011) ? S_1: S_0; // go to S_1, if x = 3'b011, otherwise go to S_0
+			S_1: 
+				next_state = (x == 3'b111) ? S_2: S_0; // go to S_2, if x = 3'b111, otherwise go to S_0
             S_2: 
-                if (x == 3'b101)
-                    next_state = S_3;
-                else
-                    next_state = S_0;
+				next_state = (x == 3'b101) ? S_3: S_0; // go to S_3, if x = 3'b101, otherwise go to S_0
     
             S_3: 
 				next_state = S_0;
