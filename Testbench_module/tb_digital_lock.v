@@ -7,7 +7,7 @@ module tb_digital_lock;
     reg        reset;
     reg [2:0]  x;
     wire       y;
-    wire [2:0] state;
+	wire [1:0] state;
 
     // Instantiate the digital_lock module
     digital_lock DUT (
