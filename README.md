@@ -12,7 +12,7 @@ The design was further enhanced with two 7-segment displays: one display shows t
 - 7-segment display for incorrect attempts - counts and displays the number of invalid sequence attempts 
 
 
-## 50MHz Clock Domain with a 2-Second Enable Pulse
+## 2-Second Enable Pulse Logic
 The FPGA board runs at 50MHz(50,000,000 Hz). If the finite state machine(FSM) were to operate directly on this clock, state transitons would occur extremely fast and would not be observable. 
 
 To address this issue an enable pulse generator was implemented to slow down the update rate of the FSM. 
