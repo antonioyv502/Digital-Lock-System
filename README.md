@@ -139,7 +139,7 @@ In this image the FSM reaches State 3, after the complete sequence (3 → 7 → 
 
 ## Moore FSM Schematic
 The FSM unlocks on the input sequence: 011 → 111 → 101. This schematic was created in CircuitVerse. 
-![FSM Diagram](Schematic/Schematic.png) 
+![FSM Diagram](Images/Schematic.png) 
 
 
 ## 🎥 Project Demo
