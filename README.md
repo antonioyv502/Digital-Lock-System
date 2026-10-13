@@ -75,11 +75,11 @@ I also added a **second 7-segment display** to indicate the overall lock status:
 
 
 ## FSM State Diagram
-![FSM_State_Diagram](Schematic/State_Diagram.png) 
+![FSM_State_Diagram](Images/State_Diagram.png) 
 
 
 ## FSM Block Diagram
-![FSM_Block_Diagram](Schematic/FSM_Block_Diagram.png) 
+![FSM_Block_Diagram](Images/FSM_Block_Diagram.png) 
 
 ## RTL Viewer 
 
