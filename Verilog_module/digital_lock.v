@@ -1,7 +1,7 @@
 module digital_lock(clk, reset, x, y, state, attempt);
 	 
     input        clk;   // clock signal(50MHz)
-    input        reset; // Aysnchronous active high reset
+    input        reset; // active high reset
     input [2:0]  x;     // 3 bit input 
     output reg   y;
     output [1:0] state;
@@ -39,8 +39,8 @@ module digital_lock(clk, reset, x, y, state, attempt);
 	reg 	   pulse;
 	 
 	 
-    always @(posedge clk or posedge reset) begin
-        if (reset) begin
+	always @(posedge clk or posedge reset) begin // Aysnchronous active high reset
+		if (reset) begin     
             counter <= 0;    // Reset counter to 0 
             pulse   <= 0;    // Pulse starts at 0
         end else if (counter == MAX_COUNT - 1) begin
@@ -55,9 +55,9 @@ module digital_lock(clk, reset, x, y, state, attempt);
 	   
   
     // State transition logic 
-    always @(posedge clk or posedge reset) begin  // active high reset
+	always @(posedge clk or posedge reset) begin  // Aysnchronous active high reset
         if (reset) begin 
-            current_state <= S_0;
+        	current_state <= S_0;
         end else if (pulse) begin                       // change to else if (pulse) for hardware implementation
             current_state <= next_state; 
 		end 		
@@ -66,12 +66,12 @@ module digital_lock(clk, reset, x, y, state, attempt);
 	 
 	 
 	 // Sequence Error Detection Logic 
-	 always @(posedge clk or posedge reset) begin 
+	 always @(posedge clk or posedge reset) begin // Aysnchronous active high reset
 	 	 if (reset) begin 
-	 			attempts <= 0;
+	 		attempts <= 0;
 	 	 end else if (pulse) begin 
 		  	 if((current_state != S_3) && (next_state == S_0)) begin 
-	 		 		attempts <= attempts + 1;
+	 			attempts <= attempts + 1;
 	 		 end 
 	 	 end  
 	 end  
